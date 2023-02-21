@@ -6,10 +6,15 @@ pool.query('select * from sensordata',(err,result)=>{
     if (err){
         throw err;
     }
+<<<<<<< HEAD
+    console.log(result.rows, result.rows.vlaue)
+    res.status(200).send(result.rows)
+=======
     result.rows.map((result)=>{
        data.push(result.value)
     })
     res.status(200).send(data)
+>>>>>>> 3759af73953d125a4e8d2e1130eca0942095531c
 })
 
 }
