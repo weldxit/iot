@@ -1,7 +1,7 @@
 const { json } = require('express')
 const express = require('express')
 const db =require('./queries')
-
+const cors = require('cors')
 const app = express()
 app.use(json())
 app.use(cors())
