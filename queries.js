@@ -1,11 +1,15 @@
 const pool = require('./database')
 
 const getSensordata=(req,res)=>{
+    const data =[]
 pool.query('select * from sensordata',(err,result)=>{
     if (err){
         throw err;
     }
-    res.status(200).send(result.rows.value)
+    result.rows.map((result)=>{
+       data.push(result.value)
+    })
+    res.status(200).send(data)
 })
 
 }
@@ -15,7 +19,8 @@ const postSensordata = (req,res)=>{
         if(err){
             throw err;
         }
-        res.status(201).send(result.rows)
+        console.log(result)
+        res.status(201).send('data pushed')
     })
 }
 module.exports ={getSensordata,postSensordata}
