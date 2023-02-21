@@ -4,6 +4,7 @@ const db =require('./queries')
 
 const app = express()
 app.use(json())
+app.use(cors())
 
 app.listen(4000,()=>{
 console.log("i am running")
