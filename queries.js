@@ -16,7 +16,7 @@ pool.query('select * from sensordata',(err,result)=>{
 }
 
 const postSensordata = (req,res)=>{
-    pool.query(`insert into sensordata values (${req.body.value})`,(err,result)=>{
+    pool.query(`insert into sensordata values (${req.body.value},${req.body.time})`,(err,result)=>{
         if(err){
             throw err;
         }
