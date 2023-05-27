@@ -3,7 +3,7 @@ const pool = require('./database')
 const getSensordata = (req, res) => {
   const data = [];
 
-  pool.query('SELECT * FROM sensordata ORDER BY value ASC', (err, result) => {
+  pool.query('SELECT * FROM sensordata', (err, result) => {
     if (err) {
       throw err;
     }
