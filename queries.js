@@ -7,7 +7,7 @@ pool.query('select * from sensordata',(err,result)=>{
         throw err;
     }
     result.rows.map((result)=>{
-       data.push(result.value)
+       data.push(result.temp,result.humi)
     })
     res.status(200).send(data)
 
