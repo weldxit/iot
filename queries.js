@@ -16,10 +16,10 @@ pool.query('select * from sensordata',(err,result)=>{
 }
 
 const postSensordata = (req, res) => {
+  const { value } = req.body;
 
   pool.query(
-    
-    `INSERT INTO sensordata VALUES (${req.body.value})`,
+    `INSERT INTO sensordata (value) VALUES ('${value}')`,
     (err, result) => {
       if (err) {
         throw err;
@@ -29,5 +29,6 @@ const postSensordata = (req, res) => {
     }
   );
 };
+
 
 module.exports ={getSensordata,postSensordata}
