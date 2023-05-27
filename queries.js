@@ -7,7 +7,7 @@ pool.query('select * from sensordata',(err,result)=>{
         throw err;
     }
     result.rows.map((result)=>{
-       data.push(result.temp,result.humi)
+       data.push(result.value)
     })
     res.status(200).send(data)
 
@@ -16,10 +16,9 @@ pool.query('select * from sensordata',(err,result)=>{
 }
 
 const postSensordata = (req, res) => {
-  const { temp, humi } = req.body;
 
   pool.query(
-    `INSERT INTO sensordata (temp, humi) VALUES (${temp}, ${humi})`,
+    `INSERT INTO sensordata VALUES (`${req.body.value}`)`,
     (err, result) => {
       if (err) {
         throw err;
