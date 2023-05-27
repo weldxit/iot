@@ -1,19 +1,21 @@
 const pool = require('./database')
 
-const getSensordata=(req,res)=>{
-    const data =[]
-pool.query('select * from sensordata',(err,result)=>{
-    if (err){
-        throw err;
+const getSensordata = (req, res) => {
+  const data = [];
+
+  pool.query('SELECT * FROM sensordata ORDER BY value ASC', (err, result) => {
+    if (err) {
+      throw err;
     }
-    result.rows.map((result)=>{
-       data.push(result.value)
-    })
-    res.status(200).send(data)
 
-})
+    result.rows.map((result) => {
+      data.push(result.value);
+    });
 
-}
+    res.status(200).send(data);
+  });
+};
+
 
 const postSensordata = (req, res) => {
   const { value } = req.body;
