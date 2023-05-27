@@ -15,13 +15,19 @@ pool.query('select * from sensordata',(err,result)=>{
 
 }
 
-const postSensordata = (req,res)=>{
-    pool.query(`INSERT INTO sensordata VALUES (${req.body.value})`,(err,result)=>{
-        if(err){
-            throw err;
-        }
-        console.log(result)
-        res.status(201).send('data pushed')
-    })
-}
+const postSensordata = (req, res) => {
+  const { temp, humi } = req.body;
+
+  pool.query(
+    `INSERT INTO sensordata (temp, humi) VALUES (${temp}, ${humi})`,
+    (err, result) => {
+      if (err) {
+        throw err;
+      }
+      console.log(result);
+      res.status(201).send('Data pushed');
+    }
+  );
+};
+
 module.exports ={getSensordata,postSensordata}
