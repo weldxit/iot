@@ -4,7 +4,6 @@ const db =require('./queries')
 const cors = require('cors')
 
 const app = express()
-app.use(bodyParser.json())
 app.use(json())
 app.use(cors())
 
